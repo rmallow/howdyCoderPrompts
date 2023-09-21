@@ -1,0 +1,3 @@
+The function should return a value. This value will be referred to as the data. This value can be of any type but should be specified in the explanation.
+If there is a case where there shouldn't be any output from the function, then the function should return None.
+If the data source has value of multiple distinct types, then the function that is produced should be a dictionary of lists where the dictionary key is the header or key value and the list contains all the values.
