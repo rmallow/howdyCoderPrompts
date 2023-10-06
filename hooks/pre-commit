@@ -1,0 +1,2 @@
+python hooks/createOutput.py
+git add output

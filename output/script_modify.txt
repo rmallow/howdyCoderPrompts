@@ -35,7 +35,7 @@ def function2():
 ```
 entry: function2
 
-Theses functions should not return any values.
+Theses functions should not return any values. Do not include a data_set parameter as earlier specified.
 
 Examples:
 User - "Read a csv file and print its rows"
