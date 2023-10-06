@@ -8,3 +8,4 @@ If you only want the last value from a data_set column: data_set["keyName"][-1]
 Assume that the period for any calculations is the length of the list in the data_set.
 Any time the user refers to data, assume that this will come out of the data_set variable.
 Always access data_set with a string, such as "prices" or "text". Do not access data_set with a variable.
+The first argument should always be data_set. If the user refers to data, this should always come from data_set.
