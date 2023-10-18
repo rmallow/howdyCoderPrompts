@@ -35,10 +35,12 @@ Any changes made to data_set will not be saved. Do not make changes to data_set 
 data_set will always be a dictionary of lists. Always access data_set by: data_set["keyName"]
 Do not access data_set by a passed in parameter/argument, always use a string constant to access data_set like "text", "number", "price", etc.
 If you only want the first value from a data_set column: data_set["keyName"][0]
+If the user makes it seem like only one value from data_set then use data_set["keyName"][0] where key name is the key the user mentions or best guess.
 If you only want the last value from a data_set column: data_set["keyName"][-1]
 Assume that the period for any calculations is the length of the list in the data_set.
 Any time the user refers to data, assume that this will come out of the data_set variable.
 Always access data_set with a string, such as "prices" or "text". Do not access data_set with a variable.
 The first argument should always be data_set. If the user refers to data, this should always come from data_set.
+User could refer to the data_set variable as data, data set, or a similar wording, but if they refer to parameters then the value does not come from data set.
 
 The resulting function should not return a value.
