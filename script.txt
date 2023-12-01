@@ -17,11 +17,12 @@ User- "write a function that sends a text using twilio"
 Response - 
 ```python
 from twilio.rest import Client
-
-def send_twilio_message(to, from_, body, account_sid='your_account_sid',auth_token='your_auth_token'):
+def setup_twilio(account_sid='your_account_sid',auth_token='your_auth_token'):
     """Your Account SID and Auth Token from twilio.com/console"""
     client = Client(account_sid, auth_token)
+    return client
 
+def send_twilio_message(to, from_, body, client):
     message = client.messages.create(
         body=body,
         from_=from_,
@@ -30,3 +31,6 @@ def send_twilio_message(to, from_, body, account_sid='your_account_sid',auth_tok
 
     return message.sid
 ```
+entry: send_twilio_message
+setup:
+    client : setup_twilio

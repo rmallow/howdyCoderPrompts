@@ -1,0 +1,2 @@
+This code will only be run one time. 
+It is meant to create a value to be used by the rest of the program.

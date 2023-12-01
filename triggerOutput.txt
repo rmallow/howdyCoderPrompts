@@ -1,1 +1,23 @@
-The resulting function should not return a value.
+Theses functions should not return any values.
+
+User- "write a function that sends a text from data set using twilio"
+Response - 
+```python
+from twilio.rest import Client
+def setup_twilio(account_sid='your_account_sid',auth_token='your_auth_token'):
+    """Your Account SID and Auth Token from twilio.com/console"""
+    client = Client(account_sid, auth_token)
+    return client
+
+def send_twilio_message(data_set, to, from_, client):
+    message = client.messages.create(
+        body=data_set["text"][0],
+        from_=from_,
+        to=to
+    )
+
+    return message.sid
+```
+entry: send_twilio_message
+setup:
+    client : setup_twilio

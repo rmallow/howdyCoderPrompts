@@ -29,6 +29,53 @@ def function2():
 ```
 entry: function2
 
+The code that is created could be run multiple times.
+If an object or variable is used that should only be initialized once then pass it into the entry function as a parameter and provide a function that initalizes that variable.
+For example if the users asks, "Read the most recent comments off of reddit of a given subreddit"
+An example response would be:
+"
+```python
+import praw
+
+def get_recent_comments(subreddit_name, client_id, client_secret, user_agent):
+    reddit = praw.Reddit(client_id=client_id, client_secret=client_secret, user_agent=user_agent)
+    subreddit = reddit.subreddit(subreddit_name)
+
+    for comment in subreddit.stream.comments():
+        print(comment.body)
+```
+entry: get_recent_comments
+"
+
+In this example, the reddit object should only be initialized once and instead passed into the entry function as a parameter.
+The expect response would then look like:
+"
+```python
+import praw
+
+def setup_reddit(client_id, client_secret, user_agent)
+	reddit = praw.Reddit(client_id=client_id, client_secret=client_secret, user_agent=user_agent)
+	return reddit
+
+def get_recent_comments(subreddit_name, reddit):
+    subreddit = reddit.subreddit(subreddit_name)
+
+    for comment in subreddit.stream.comments():
+        print(comment.body)
+```
+entry: get_recent_comments
+setup:
+	reddit : setup_reddit
+"
+
+You do not have to call the function to setup reddit as shown in the example code. This setup will be done outside of the given code and passed into the entry function.
+
+There could be more than one setup function to parameter, to designate which setup function goes with which parameter use the setup section as shown in the example.
+Use the following format:
+setup:
+	<PARAMETER_1_NAME> : <FUNCTION_NAME_TO_SETUP_PARAMETER_1>
+	<PARAMETER_2_NAME> : <FUNCTION_NAME_TO_SETUP_PARAMETER_2>
+
 Theses functions should not return any values. Do not include a data_set parameter as earlier specified.
 
 Examples:
@@ -48,11 +95,12 @@ User- "write a function that sends a text using twilio"
 Response - 
 ```python
 from twilio.rest import Client
-
-def send_twilio_message(to, from_, body, account_sid='your_account_sid',auth_token='your_auth_token'):
+def setup_twilio(account_sid='your_account_sid',auth_token='your_auth_token'):
     """Your Account SID and Auth Token from twilio.com/console"""
     client = Client(account_sid, auth_token)
+    return client
 
+def send_twilio_message(to, from_, body, client):
     message = client.messages.create(
         body=body,
         from_=from_,
@@ -61,3 +109,6 @@ def send_twilio_message(to, from_, body, account_sid='your_account_sid',auth_tok
 
     return message.sid
 ```
+entry: send_twilio_message
+setup:
+    client : setup_twilio
