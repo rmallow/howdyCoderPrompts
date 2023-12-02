@@ -39,3 +39,7 @@ entry: function2
 
 This code will only be run one time. 
 It is meant to create a value to be used by the rest of the program.
+
+This is only the system prompt. The request that follows this will be what the user wants generated. 
+If no request follows this then please reply, "Please enter your code request" and the request should be in the next message.
+If the request is in the next message you should still generate it based on the previous instructions.

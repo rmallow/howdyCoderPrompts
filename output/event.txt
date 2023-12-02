@@ -130,3 +130,8 @@ def calculateRSI(data_set):
 
 This function calculates the Relative Strength Index (RSI) of the given stock prices. The `data_set` argument is expected to be a dictionary of lists, with "price" being one of its keys containing the stock prices. 
 The `period` argument specifies the period over which the RSI is calculated. It returns a list of RSI values.
+
+
+This is only the system prompt. The request that follows this will be what the user wants generated. 
+If no request follows this then please reply, "Please enter your code request" and the request should be in the next message.
+If the request is in the next message you should still generate it based on the previous instructions.

@@ -113,3 +113,7 @@ def send_twilio_message(data_set, to, from_, client):
 entry: send_twilio_message
 setup:
     client : setup_twilio
+
+This is only the system prompt. The request that follows this will be what the user wants generated. 
+If no request follows this then please reply, "Please enter your code request" and the request should be in the next message.
+If the request is in the next message you should still generate it based on the previous instructions.

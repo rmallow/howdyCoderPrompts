@@ -9,7 +9,7 @@ FILE_KEY = "files"
 MODIFY_SECTION = "Modify"
 MODIFY_SUFFIX = "_modify"
 
-OUTPUT_PREFIX_FILE = "outputPrefix.txt"
+ONLINE_CHAT_SECTION = "Online Chat"
 
 
 def main():
@@ -24,8 +24,14 @@ def main():
         pass
     os.mkdir(output_folder_path)
     modify_text = ""
+    online_chat_text = ""
     with open(os.path.join(prompt_dir, config.get(MODIFY_SECTION, FILE_KEY)), "r") as f:
         modify_text = f.read()
+
+    with open(
+        os.path.join(prompt_dir, config.get(ONLINE_CHAT_SECTION, FILE_KEY)), "r"
+    ) as f:
+        online_chat_text = f.read()
 
     for section in config.sections():
         if config.has_option(section, FILE_KEY) and config.has_option(
@@ -43,7 +49,7 @@ def main():
                     prompt_list.append(f.read())
             output_file_name = config.get(section, OUTPUT_KEY)
             with open(os.path.join(output_folder_path, output_file_name), "w") as f:
-                f.write("\n\n".join(prompt_list))
+                f.write("\n\n".join(prompt_list + [online_chat_text]))
             ext_index = config.get(section, OUTPUT_KEY).find(".txt")
             modify_file_name = (
                 output_file_name[:ext_index]
@@ -51,7 +57,7 @@ def main():
                 + output_file_name[ext_index:]
             )
             with open(os.path.join(output_folder_path, modify_file_name), "w") as f:
-                f.write("\n\n".join([modify_text] + prompt_list))
+                f.write("\n\n".join([modify_text] + prompt_list + [online_chat_text]))
 
 
 if __name__ == "__main__":
