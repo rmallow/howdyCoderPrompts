@@ -46,7 +46,9 @@ def main():
                     ),
                     "r",
                 ) as f:
-                    prompt_list.append(f.read())
+                    text = f.read()
+                    text = text.replace("<", "&lt;").replace(">", "&gt;")
+                    prompt_list.append(text)
             output_file_name = config.get(section, OUTPUT_KEY)
             with open(os.path.join(output_folder_path, output_file_name), "w") as f:
                 f.write("\n\n".join(prompt_list + [online_chat_text]))
