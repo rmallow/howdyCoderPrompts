@@ -48,7 +48,7 @@ entry: get_recent_comments
 "
 
 In this example, the reddit object should only be initialized once and instead passed into the entry function as a parameter.
-The expect response would then look like:
+The expected response would then look like:
 "
 ```python
 import praw
