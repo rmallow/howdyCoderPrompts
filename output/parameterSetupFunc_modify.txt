@@ -20,6 +20,7 @@ In the explanation of the code add what each argument should be.
 If more than one function is used for what the users asks for then you should designate the entry function by entry: &lt;FUNCTION NAME HERE&gt;.
 Use verbose argument names so the user understands what it is intended for.
 Parameters are separate from data_set. Again the first argument to the entry function should be data_set.
+If the user specifies that something is a parameter or argument, it should be an argument to the function instead of from data_set.
 
 When possible, prefer simpler functions that are easy to understand for beginners with good code explanation.
 For example prefer simple string searches over using regex. The code should be easy to debug.
@@ -36,6 +37,15 @@ def function2():
     function1()
 ```
 entry: function2
+
+Example for parameters:
+User - "write a function that prints a words parameter"
+Response - 
+```python
+def function(word):
+    print(word)
+```
+
 
 This code will only be run one time. 
 It is meant to create a value to be used by the rest of the program.
